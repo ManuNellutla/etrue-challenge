@@ -24,17 +24,17 @@ Etrue Code Challenge
 		- tenured/{CompanyName} : GET : LIST<Company>	:	
 	
 # Resources / Entities
-	- companies
-	- careers
-	- employee
-	- employee_careers : programatically loaded : denormalized for easy querying and performance
+- companies
+- careers
+- employee
+- employee_careers : programatically loaded : denormalized for easy querying and performance
 
 # Endpoints:
-	- To access the API
-	- To run admin task
-	- To view API health, configuration etc
-	- Accessing Swagger UI
-	- view / acces h2 database
+- To access the API
+- To run admin task
+- To view API health, configuration etc
+- Accessing Swagger UI
+- view / acces h2 database
 
 # Bonus
 
