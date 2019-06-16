@@ -45,6 +45,7 @@ public class CareersController {
     public CareersController() {
     }
 
+
     @ApiOperation(value = "View a list of careers", response = Career.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
@@ -54,7 +55,7 @@ public class CareersController {
     }
     )
     @GetMapping(value = "/careers")
-    public ResponseEntity getCareers(@PathVariable String company_id) {
+    public ResponseEntity getCareers() {
         return ResponseEntity.ok("success");
     }
 

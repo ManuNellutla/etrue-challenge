@@ -36,6 +36,8 @@ Etrue Code Challenge
 - Accessing Swagger UI
     - http://localhost:9090/swagger-ui.html
         - /admin
+        - /careers
+        - /companies
 - view / acces h2 database
     - http://localhost:9090/h2-console
     - username / password : admin / admin
