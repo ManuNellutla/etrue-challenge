@@ -1,4 +1,3 @@
-
 /*
  * MIT License
  *
@@ -24,60 +23,42 @@
  * SOFTWARE.
  */
 
-package com.etrue.challenge.model;
+package com.etrue.challenge.services;
 
-import javax.persistence.*;
-import java.util.Arrays;
+import com.etrue.challenge.model.Company;
+import com.etrue.challenge.model.CompanyRetention;
 
+import java.util.List;
 
-@Entity
-@Table(name="company")
-public class Company{
+public class CompanyDataServiceImpl implements CompanyDataService {
 
-    @Id
-    @GeneratedValue
-    private long companyId;
-
-    private String companyName;
-
-    @Column(columnDefinition = "VARCHAR(40)")
-    private String[] statesPresent ;
-
-    public Company(String companyName, String[] statesPresent) {
-        this.companyName = companyName;
-        this.statesPresent = statesPresent;
-    }
-
-    public long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(long companyId) {
-        this.companyId = companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String[] getStatesPresent() {
-        return statesPresent;
-    }
-
-    public void setStatesPresent(String[] statesPresent) {
-        this.statesPresent = statesPresent;
+    @Override
+    public List<Company> getCompanyAvgTenure() {
+        return null;
     }
 
     @Override
-    public String toString() {
-        return "Company{" +
-                "companyId=" + companyId +
-                ", companyName='" + companyName + '\'' +
-                ", statesPresent=" + Arrays.toString(statesPresent) +
-                '}';
+    public List<CompanyRetention> getCompanyAvgRetention() {
+        return null;
+    }
+
+    @Override
+    public List<Company> getCompanies() {
+        return null;
+    }
+
+    @Override
+    public Company getCompanyById(long id) {
+        return null;
+    }
+
+    @Override
+    public Company postCompany() {
+        return null;
+    }
+
+    @Override
+    public List<Company> deleteCompany() {
+        return null;
     }
 }
