@@ -35,6 +35,8 @@ Etrue Code Challenge
 - To view API health, configuration etc
 - Accessing Swagger UI
 - view / acces h2 database
+    - http://localhost:9090/h2-console
+    - username / password : admin / admin
 
 # Bonus
 
