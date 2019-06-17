@@ -43,6 +43,8 @@ public class Company{
     @Column(columnDefinition = "VARCHAR(40)")
     private String[] statesPresent ;
 
+    public Company(){super();}
+
     public Company(String companyName, String[] statesPresent) {
         this.companyName = companyName;
         this.statesPresent = statesPresent;

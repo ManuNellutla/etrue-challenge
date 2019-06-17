@@ -40,6 +40,10 @@ public class Career {
 
     private String careerName;
 
+    public Career() {
+        super();
+    }
+
     public Career(String careerName) {
         this.careerName = careerName;
     }

@@ -43,6 +43,7 @@ public class CompanyEmployeeStatistics {
 
     private double tenure;
 
+    public CompanyEmployeeStatistics(){super();}
 
     public long getCompanyId() {
         return companyId;

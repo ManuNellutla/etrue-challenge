@@ -23,44 +23,10 @@
  * SOFTWARE.
  */
 
-package com.etrue.challenge.services;
+package com.etrue.challenge.dao;
 
-import com.etrue.challenge.model.Company;
-import com.etrue.challenge.model.CompanyRetention;
-import org.springframework.stereotype.Service;
+import com.etrue.challenge.model.Career;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-@Service
-public class CompanyDataServiceImpl implements CompanyDataService {
-
-    @Override
-    public List<Company> getCompanyAvgTenure() {
-        return null;
-    }
-
-    @Override
-    public List<CompanyRetention> getCompanyAvgRetention() {
-        return null;
-    }
-
-    @Override
-    public List<Company> getCompanies() {
-        return null;
-    }
-
-    @Override
-    public Company getCompanyById(long id) {
-        return null;
-    }
-
-    @Override
-    public Company postCompany() {
-        return null;
-    }
-
-    @Override
-    public List<Company> deleteCompany() {
-        return null;
-    }
+public interface CareerRepository extends JpaRepository<Career, Long> {
 }

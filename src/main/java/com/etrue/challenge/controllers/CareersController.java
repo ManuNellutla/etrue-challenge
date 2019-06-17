@@ -27,26 +27,55 @@ package com.etrue.challenge.controllers;
 
 import com.etrue.challenge.model.Career;
 import com.etrue.challenge.model.CompanyEmployeeStatistics;
+import com.etrue.challenge.services.CareerDataService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Controller providing mappings for career api operations.
+ *
+ * @author ManuNellutla
+ * @
+ *
+ */
 @RestController
 @RequestMapping(path = "/api/v1/career")
 @Api(value = "Careers info", description = "Careers Api. Operations to get career details and CRUD operations", tags = {"career-info"})
 public class CareersController {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(CareersController.class);
+
     public CareersController() {
     }
 
+    private CareerDataService careerDataService;
 
-    @ApiOperation(value = "View a list of careers", response = Career.class)
+    /**
+     *  <p>This method sets career data service.</p>
+     * @param careerDataService
+     */
+    @Autowired
+    public void setCareerDataService(CareerDataService careerDataService) {
+        this.careerDataService = careerDataService;
+    }
+
+    /**
+     * Operation to retrieve all careers from career entity table. This is a get all operation using GET verb.
+     * @return
+     */
+    @ApiOperation(value = "View a list of careers",
+            notes="Operation gets all the careers in the careers table.",
+            response = Career.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -56,10 +85,19 @@ public class CareersController {
     )
     @GetMapping(value = "/careers")
     public ResponseEntity getCareers() {
-        return ResponseEntity.ok("success");
+        LOGGER.info("Get Careers Data");
+        return ResponseEntity.ok(careerDataService.getCareers());
+
     }
 
-    @ApiOperation(value = "Display a career", response = Career.class)
+    /**
+     * Operation to get career by ID.
+     * @param id career Id is a numeric value
+     * @return
+     */
+    @ApiOperation(value = "Display a career by ID (Not Implemented)",
+            notes="This is a placeholder and is not implemented. ",
+            response = Career.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
@@ -80,6 +118,6 @@ public class CareersController {
     })
     @GetMapping(value = "/careers/{employeeid}")
     public ResponseEntity retrieveId(@PathVariable String employeeid) {
-        return ResponseEntity.ok("Sucess");
+        return ResponseEntity.ok(careerDataService.getCareersByEmployeeId(Long.parseLong(employeeid)));
     }
 }

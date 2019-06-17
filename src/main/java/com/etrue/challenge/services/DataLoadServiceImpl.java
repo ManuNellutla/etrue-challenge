@@ -25,7 +25,12 @@
 
 package com.etrue.challenge.services;
 
+
+import org.springframework.stereotype.Service;
+
+@Service
 public class DataLoadServiceImpl implements DataLoadService {
+
 
     @Override
     public void genDataSet() {

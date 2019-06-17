@@ -25,17 +25,39 @@
 
 package com.etrue.challenge.services;
 
+import com.etrue.challenge.dao.CareerRepository;
 import com.etrue.challenge.model.Career;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CareerDataServiceImpl implements CareerDataService {
 
-    @Override
-    public List<Career> getCareers() {
-        return null;
+    @Autowired
+    private CareerRepository careerRepository;
+
+    @Autowired
+    public void setAddBookRepository (CareerRepository careerRepository){
+
+        this.careerRepository = careerRepository;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<Career> getCareers() {
+        return careerRepository.findAll();
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public List<Career> getCareersByEmployeeId(long id) {
         return null;

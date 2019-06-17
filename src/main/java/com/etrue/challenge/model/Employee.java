@@ -53,6 +53,8 @@ public class Employee {
 
     private String state;
 
+    public Employee(){super();}
+
     public Employee(String fName, String lName, int age, String companyWorked, Date startDate, Date endDate, String state) {
         this.fName = fName;
         this.lName = lName;
