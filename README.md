@@ -8,7 +8,7 @@ Etrue Code Challenge
 ````
     mvn clean package
 ````
-* From Download directory run the following command
+* From project directory run the following command
 ````
      mvn spring-boot:run
 ````
