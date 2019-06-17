@@ -45,7 +45,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Controller providing mappings for career api operations.
  *
  * @author ManuNellutla
- * @
+ *
  *
  */
 @RestController
@@ -71,7 +71,7 @@ public class CareersController {
 
     /**
      * Operation to retrieve all careers from career entity table. This is a get all operation using GET verb.
-     * @return
+     * @return returns a list of {@link Career}
      */
     @ApiOperation(value = "View a list of careers",
             notes="Operation gets all the careers in the careers table.",
@@ -85,7 +85,7 @@ public class CareersController {
     )
     @GetMapping(value = "/careers")
     public ResponseEntity getCareers() {
-        LOGGER.info("Get Careers Data");
+        LOGGER.info("Entering > Get Careers Data");
         return ResponseEntity.ok(careerDataService.getCareers());
 
     }
