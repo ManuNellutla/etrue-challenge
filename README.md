@@ -22,8 +22,9 @@ Etrue Code Challenge
 - h2 - memory based DB (for the frist iteration)
 - IntelliJ IDE
 - Java 1.8 (per Req)
-- Maven 
+- Maven 3+
 - Log4j2
+- Apache commons CSV 1.7
 
 ## API Contract
   - .../api/v1/admin/selfservice {Admin Credentials Needed}

@@ -26,10 +26,12 @@
 package com.etrue.challenge.controllers;
 
 import com.etrue.challenge.model.CompanyEmployeeStatistics;
+import com.etrue.challenge.services.DataLoadService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,13 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     public AdminController() {
+    }
+
+    private DataLoadService dataLoadService;
+
+    @Autowired
+    public void setDataLoadService(DataLoadService dataLoadService){
+        this.dataLoadService = dataLoadService;
     }
 
     @ApiOperation(value = "Dynamically generate employee-company-career dataset and load it into company_emp_stats table.",
@@ -55,6 +64,6 @@ public class AdminController {
     )
     @PostMapping(path = "/genDataSet/")
     public ResponseEntity generateDataSet(@RequestParam("username") String uname, @RequestParam("password") String password) {
-        return ResponseEntity.ok("success");
+        return ResponseEntity.ok(dataLoadService.genDataSet());
     }
 }

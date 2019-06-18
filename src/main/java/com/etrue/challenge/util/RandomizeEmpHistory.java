@@ -23,9 +23,34 @@
  * SOFTWARE.
  */
 
-package com.etrue.challenge.services;
+package com.etrue.challenge.util;
 
-public interface DataLoadService {
+import com.etrue.challenge.controllers.CareersController;
+import com.etrue.challenge.model.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    public String genDataSet();
+import java.util.List;
+
+public class RandomizeEmpHistory {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(RandomizeEmpHistory.class);
+
+    /**
+     *
+     * @param emp
+     * @return
+     */
+    public Employee randomizeHistory(Employee emp){
+
+        //validate Age
+        if(emp.getAge() > 18){
+
+
+        }else{
+            LOGGER.info("Employee {} is too young to work. Age :{}",emp.getfName(),emp.getAge());
+        }
+
+        return emp;
+    }
 }

@@ -23,26 +23,29 @@
  * SOFTWARE.
  */
 
-package com.etrue.challenge.services;
+package com.etrue.challenge.util;
 
-
-import com.etrue.challenge.dao.CareerRepository;
+import com.etrue.challenge.controllers.CareersController;
 import com.etrue.challenge.dao.EmployeeRepository;
 import com.etrue.challenge.model.Employee;
-import com.etrue.challenge.util.CSVReader;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-@Service
-public class DataLoadServiceImpl implements DataLoadService {
+@Component
+public class CSVReader {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(DataLoadService.class);
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(CSVReader.class);
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -53,24 +56,30 @@ public class DataLoadServiceImpl implements DataLoadService {
         this.employeeRepository = employeeRepository;
     }
 
-    @Autowired
-    private CSVReader csvReader;
+    /**
+     *
+     * @param fileName
+     * @return
+     */
+    public void importCsv(String fileName) throws IOException {
 
-    @Override
-    public String genDataSet() {
-
-        long tableCount=0;
-
-        try {
-            csvReader.importCsv("data.csv");
-            tableCount = employeeRepository.count();
-
-            LOGGER.info("Employee table has {} emps", tableCount);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        String fullpath = getClass().getClassLoader().getResource(fileName).getPath();
+        Reader in = new FileReader(fullpath);
+        Iterable<CSVRecord> records = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(in);
+        List<Employee> employees = new ArrayList<>();
+        Employee emp = new Employee();
+        for(CSVRecord rec : records){
+           employeeRepository.save(new Employee(rec.get("first_name"),
+                   rec.get("last_name"),
+                   Integer.parseInt(rec.get("age")),
+                   rec.get("state")
+           ));
         }
+        LOGGER.info("Number of Employees in the list {}",employees.size());
+    }
 
-        return "DataSet Created. ";
+    public static void main(String[] args) throws IOException {
+        new CSVReader().importCsv("data.csv");
+
     }
 }

@@ -25,10 +25,7 @@
 
 package com.etrue.challenge.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -36,7 +33,7 @@ import java.util.Date;
 public class Employee {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long employeeId;
 
     private String fName;
@@ -45,23 +42,14 @@ public class Employee {
 
     private int age;
 
-    private String companyWorked;
-
-    private Date startDate;
-
-    private Date endDate;
-
     private String state;
 
     public Employee(){super();}
 
-    public Employee(String fName, String lName, int age, String companyWorked, Date startDate, Date endDate, String state) {
+    public Employee(String fName, String lName, int age, String state) {
         this.fName = fName;
         this.lName = lName;
         this.age = age;
-        this.companyWorked = companyWorked;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.state = state;
     }
 
@@ -97,29 +85,6 @@ public class Employee {
         this.age = age;
     }
 
-    public String getCompanyWorked() {
-        return companyWorked;
-    }
-
-    public void setCompanyWorked(String companyWorked) {
-        this.companyWorked = companyWorked;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
 
     public String getState() {
         return state;
@@ -136,9 +101,6 @@ public class Employee {
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
                 ", age=" + age +
-                ", companyWorked='" + companyWorked + '\'' +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
                 ", state='" + state + '\'' +
                 '}';
     }

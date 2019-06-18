@@ -23,9 +23,13 @@
  * SOFTWARE.
  */
 
-package com.etrue.challenge.services;
+package com.etrue.challenge.dao;
 
-public interface DataLoadService {
+import com.etrue.challenge.model.Career;
+import com.etrue.challenge.model.Employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    public String genDataSet();
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 }
